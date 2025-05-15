@@ -1,21 +1,15 @@
-/*using UnityEngine;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class SceneController : MonoBehaviour
+public class SceneLoader : MonoBehaviour
 {
-    [SerializeField]
-    private floaat _sceneFadeDuration;
-
-    private SceneFade _sceneFade;
-
-    private void Awake()
+    public void LoadSceneByName(string sceneName)
     {
-        _sceneFade = GetComponentInChildren<SceneFade>();
+        SceneManager.LoadScene(sceneName);
     }
 
-    private IEnumerator Start()
+    public void LoadSceneByIndex(int sceneIndex)
     {
-        yield return _sceneFade.FadeInCoroutine(_sceneFadeDuration);
+        SceneManager.LoadScene(sceneIndex);
     }
 }
-}
-*/
