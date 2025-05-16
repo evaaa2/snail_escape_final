@@ -16,8 +16,7 @@ public class SnailScript : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        
+    {      
         horizontalMove = UnityEngine.Input.GetAxisRaw("Horizontal")* movementSpeed;
         movementDirection = new Vector2(UnityEngine.Input.GetAxis("Horizontal"), UnityEngine.Input.GetAxis("Vertical"));
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
@@ -44,20 +43,25 @@ public class SnailScript : MonoBehaviour
         myRigidBody.linearVelocity = transform.rotation * movementDirection * movementSpeed;
     }
 
+
+    // kod pro lezeni po stenach
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Floor"))
         {
-            print("Collided with floor.");
-            transform.rotation = Quaternion.identity;
-        } else if (collision.collider.CompareTag("Left"))
+            transform.rotation = Quaternion.identity; // tzn. 0,0,0
+        }
+        else if (collision.collider.CompareTag("Left"))
         {
-            print("Collided with left wall.");
             transform.rotation = Quaternion.Euler(new Vector3(0, 0, -90));
-        } else if (collision.collider.CompareTag("Right"))
+        }
+        else if (collision.collider.CompareTag("Right"))
         {
-            print("Collided with right wall.");
             transform.rotation = Quaternion.Euler(new Vector3(0, 0, 90));
+        }
+        else if (collision.collider.CompareTag("Ceiling"))
+        {
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, 180));
         }
     }
 }
