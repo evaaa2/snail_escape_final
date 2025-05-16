@@ -253,8 +253,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
-<<<<<<< Updated upstream:Snail/Assets/Scenes/SceneBlueprint.unity
-=======
 --- !u!1 &317804328
 GameObject:
   m_ObjectHideFlags: 0
@@ -457,7 +455,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25b36e23c08ebd4418b8c2014aa3de9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
->>>>>>> Stashed changes:Snail/Assets/Scenes/2Scene.unity
 --- !u!1 &454197073
 GameObject:
   m_ObjectHideFlags: 0
