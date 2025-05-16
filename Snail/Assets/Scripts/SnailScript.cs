@@ -41,6 +41,23 @@ public class SnailScript : MonoBehaviour
     }
     void FixedUpdate()
     {
-        myRigidBody.linearVelocity = movementDirection * movementSpeed;
+        myRigidBody.linearVelocity = transform.rotation * movementDirection * movementSpeed;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Floor"))
+        {
+            print("Collided with floor.");
+            transform.rotation = Quaternion.identity;
+        } else if (collision.collider.CompareTag("Left"))
+        {
+            print("Collided with left wall.");
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, -90));
+        } else if (collision.collider.CompareTag("Right"))
+        {
+            print("Collided with right wall.");
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, 90));
+        }
     }
 }
