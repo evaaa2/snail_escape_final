@@ -28,14 +28,15 @@ public class SnailScript : MonoBehaviour
         float inputY = UnityEngine.Input.GetAxisRaw("Vertical");
         horizontalMove = UnityEngine.Input.GetAxisRaw("Horizontal") * movementSpeed;
         movementDirection = new Vector2(UnityEngine.Input.GetAxisRaw("Horizontal"), UnityEngine.Input.GetAxisRaw("Vertical"));
-        /*if (isOnWall)
+        if (isOnWall)
         {
             animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
         }
         else 
         {
             animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
-        }*/
+        }
+
 
         if (movementDirection.x > 0)
         {
@@ -69,36 +70,36 @@ public class SnailScript : MonoBehaviour
         {
             transform.rotation = Quaternion.identity; // tzn. 0,0,0
             Rigidbody2D rb = GetComponent<Rigidbody2D>();
-            //rb.gravityScale = 1f;
-            /*isOnCeiling = false;
-            isOnWall = false;*/
+            rb.gravityScale = 1f;
+            isOnCeiling = false;
+            isOnWall = false;
         }
         else if (collision.collider.CompareTag("Left"))
         {
             transform.rotation = Quaternion.Euler(new Vector3(0, 0, -90));
             Rigidbody2D rb = GetComponent<Rigidbody2D>();
-            //rb.gravityScale = 0f;
-            /*isOnCeiling = false;
-            isOnWall = true;*/
+            rb.gravityScale = 0f;
+            isOnCeiling = false;
+            isOnWall = true;
         }
         else if (collision.collider.CompareTag("Right"))
         {
             transform.rotation = Quaternion.Euler(new Vector3(0, 0, 90));
             Rigidbody2D rb = GetComponent<Rigidbody2D>();
-            //rb.gravityScale = 0f;
-            /*isOnCeiling = false;
-            isOnWall = true;*/
+            rb.gravityScale = 0f;
+            isOnCeiling = false;
+            isOnWall = true;
         }
         else if (collision.collider.CompareTag("Ceiling"))
         {
             transform.rotation = Quaternion.Euler(new Vector3(0, 0, 180));
             Rigidbody2D rb = GetComponent<Rigidbody2D>();
-            //rb.gravityScale = 0f;
-            /*isOnCeiling = true;
-            isOnWall = false;*/
+            rb.gravityScale = 0f;
+            isOnCeiling = true;
+            isOnWall = false;
         }
         
-        /*directionMultiplier = isOnCeiling ? -1f : 1f;*/
+        directionMultiplier = isOnCeiling ? -1f : 1f;
 
     }
 }
