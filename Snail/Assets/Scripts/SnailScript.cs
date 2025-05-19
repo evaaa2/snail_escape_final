@@ -12,7 +12,7 @@ public class SnailScript : MonoBehaviour
     public Animator animator;
     public bool isOnCeiling = false;
     public float directionMultiplier;
-    public bool isOnWall = false;
+    //public bool isOnWall = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -31,7 +31,7 @@ public class SnailScript : MonoBehaviour
         
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
-
+        // otaceni sneka a animace
         if (movementDirection.x > 0) //otaceni sneka kdyz leze do leva/do prava
         {
             transform.localScale = new Vector3(directionMultiplier * -1, 1, 1); //nasobim tim direction multiplier aby se otacel spravne i kdyz je na strope
@@ -51,6 +51,7 @@ public class SnailScript : MonoBehaviour
             animator.SetBool("KeyDown", false);
         }
     }
+
     void FixedUpdate()
     {
         myRigidBody.linearVelocity = transform.rotation * movementDirection * directionMultiplier * movementSpeed;
@@ -64,9 +65,10 @@ public class SnailScript : MonoBehaviour
         {
             transform.rotation = Quaternion.identity; // tzn. 0,0,0
             Rigidbody2D rb = GetComponent<Rigidbody2D>();
-            rb.gravityScale = 1f; //na zemi ma gravitaci rovnou 1 
+            //uprava!!
+            rb.gravityScale = 0f; //na zemi ma gravitaci rovnou 1
             isOnCeiling = false; //nastaveni, jestli je na zdi nebo na strope nebo normalne na zemi
-            isOnWall = false; //to isOnWall asi zatim neni potreba, nikde jsem to nakonec nepouzila
+            //isOnWall = false; //to isOnWall asi zatim neni potreba, nikde jsem to nakonec nepouzila
         }
         else if (collision.collider.CompareTag("Left"))
         {
@@ -74,7 +76,7 @@ public class SnailScript : MonoBehaviour
             Rigidbody2D rb = GetComponent<Rigidbody2D>(); //uploaduju data rigidbody z te hry
             rb.gravityScale = 0f; //nastaveni gravitace na 0 - kdyz leze po stenach a strope
             isOnCeiling = false;
-            isOnWall = true;
+            //isOnWall = true;
         }
         else if (collision.collider.CompareTag("Right"))
         {
@@ -82,7 +84,7 @@ public class SnailScript : MonoBehaviour
             Rigidbody2D rb = GetComponent<Rigidbody2D>();
             rb.gravityScale = 0f;
             isOnCeiling = false;
-            isOnWall = true;
+            //isOnWall = true;
         }
         else if (collision.collider.CompareTag("Ceiling"))
         {
@@ -90,9 +92,8 @@ public class SnailScript : MonoBehaviour
             Rigidbody2D rb = GetComponent<Rigidbody2D>();
             rb.gravityScale = 0f;
             isOnCeiling = true;
-            isOnWall = false;
+            //isOnWall = false;
         }
-
         directionMultiplier = isOnCeiling ? -1f : 1f; //pokud je na strope, otoci se nejak ty vektory (z chata), nasobim tim pak ten pohyb a otaceni, aby se i na strope pohyboval realisticky (pretacel se v souladu se smerem)
     }
 }
