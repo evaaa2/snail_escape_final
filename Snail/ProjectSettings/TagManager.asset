@@ -9,6 +9,7 @@ TagManager:
   - Right
   - Ceiling
   - Background
+  - Key
   layers:
   - Default
   - TransparentFX

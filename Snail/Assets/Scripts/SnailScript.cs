@@ -97,6 +97,12 @@ public class SnailScript : MonoBehaviour
             isOnCeiling = true;
             //isOnWall = false;
         }
+
+        else if (collision.collider.CompareTag("Key"))
+        {
+            hasKey = true;
+        }
+
         directionMultiplier = isOnCeiling ? -1f : 1f; //pokud je na strope, otoci se nejak ty vektory (z chata), nasobim tim pak ten pohyb a otaceni, aby se i na strope pohyboval realisticky (pretacel se v souladu se smerem)
     }
 }
