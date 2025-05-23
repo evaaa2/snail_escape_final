@@ -6,12 +6,12 @@ public class SnailScript : MonoBehaviour
 {
     public Rigidbody2D myRigidBody;
     public SpriteRenderer mySpriteRenderer;
-    private float movementSpeed = 10f;
+    private float movementSpeed = 50f;
     float horizontalMove = 0f;
     private Vector2 movementDirection;
     public Animator animator;
     public bool isOnCeiling = false;
-    public float directionMultiplier;
+    public float directionMultiplier = 1;
 
     public bool hasKey = false;
 
@@ -37,12 +37,12 @@ public class SnailScript : MonoBehaviour
         // otaceni sneka a animace
         if (movementDirection.x > 0) //otaceni sneka kdyz leze do leva/do prava
         {
-            transform.localScale = new Vector3(directionMultiplier * -1, 1, 1); //nasobim tim direction multiplier aby se otacel spravne i kdyz je na strope
+            transform.localScale = new Vector3(-1, 1, 1); //nasobim tim direction multiplier aby se otacel spravne i kdyz je na strope
 
         }
         else if (movementDirection.x < 0)
         {
-            transform.localScale = new Vector3(directionMultiplier * 1, 1, 1);
+            transform.localScale = new Vector3(1, 1, 1);
         }
 
         if (UnityEngine.Input.GetKeyDown(KeyCode.RightArrow) || UnityEngine.Input.GetKeyDown(KeyCode.LeftArrow))
@@ -57,7 +57,9 @@ public class SnailScript : MonoBehaviour
 
     void FixedUpdate()
     {
-        myRigidBody.linearVelocity = transform.rotation * movementDirection * directionMultiplier * movementSpeed;
+        transform.position += transform.rotation * new Vector3(movementDirection.x, 0, 0) * Time.deltaTime * movementSpeed;
+        //myRigidBody.linearVelocity = transform.rotation * movementDirection * movementSpeed;
+        //myRigidBody.AddForce(transform.rotation * movementDirection * movementSpeed);
     }
 
 
