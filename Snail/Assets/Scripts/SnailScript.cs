@@ -12,6 +12,9 @@ public class SnailScript : MonoBehaviour
     public Animator animator;
     public bool isOnCeiling = false;
     public float directionMultiplier;
+
+    public bool hasKey = false;
+
     //public bool isOnWall = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
