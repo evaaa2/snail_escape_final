@@ -10,6 +10,7 @@ public class MikroskopScript : MonoBehaviour
     public float stepSize = 1f;
     public TMP_Text winText;
     private RectTransform playerRect;
+    public bool isHold = false;
     private bool gameEnded = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -28,12 +29,50 @@ public class MikroskopScript : MonoBehaviour
         if (gameEnded) return;
 
         Vector2 move = Vector2.zero;
-        if (UnityEngine.Input.GetKeyDown(KeyCode.UpArrow)) move = Vector2.up * stepSize;
-        if (UnityEngine.Input.GetKeyDown(KeyCode.DownArrow)) move = Vector2.down * stepSize;
-        if (UnityEngine.Input.GetKeyDown(KeyCode.LeftArrow)) move = Vector2.left * stepSize;
-        if (UnityEngine.Input.GetKeyDown(KeyCode.RightArrow)) move = Vector2.right * stepSize;
+        if (UnityEngine.Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            move = Vector2.up * stepSize;
+            isHold = true;
+        }
 
-        playerRect.anchoredPosition += move;
+        if (UnityEngine.Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            move = Vector2.down * stepSize;
+            isHold = true;
+        }
+        if (UnityEngine.Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            move = Vector2.left * stepSize;
+            isHold = true;
+        }
+        if (UnityEngine.Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            move = Vector2.right * stepSize;
+            isHold = true;
+        }
+
+        if (UnityEngine.Input.GetKeyUp(KeyCode.UpArrow))
+        {
+            isHold = false;
+        }
+        if (UnityEngine.Input.GetKeyUp(KeyCode.DownArrow))
+        {
+            isHold = false;
+        }
+        if (UnityEngine.Input.GetKeyUp(KeyCode.RightArrow))
+        {
+            isHold = false;
+        }
+        if (UnityEngine.Input.GetKeyUp(KeyCode.LeftArrow))
+        {
+            isHold = false;
+        }
+
+        while (isHold)
+        {
+            playerRect.anchoredPosition += move;
+        }
+        //playerRect.anchoredPosition += move;
 
         if (Vector2.Distance(playerRect.anchoredPosition, targetRect.anchoredPosition) < 0.1f)
         {
