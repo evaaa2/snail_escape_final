@@ -1,6 +1,7 @@
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Windows;
 
 public class MikroskopScript : MonoBehaviour
@@ -12,6 +13,11 @@ public class MikroskopScript : MonoBehaviour
     private RectTransform playerRect;
     public bool isHold = false;
     private bool gameEnded = false;
+    public bool position = false;
+    public bool light = false;
+    public bool sharp = false;
+    public Slider sharpnessSlider;
+    public Slider lightnessSlider;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -71,6 +77,18 @@ public class MikroskopScript : MonoBehaviour
         playerRect.anchoredPosition += move;
 
         if (Vector2.Distance(playerRect.anchoredPosition, targetRect.anchoredPosition) < 0.1f)
+        {
+            position = true;
+        }
+        if (sharpnessSlider.value == 1) 
+        {
+            sharp = true;
+        }
+        if (lightnessSlider.value < 0.55 && lightnessSlider.value > 0.4)
+        {
+            light = true;
+        }
+        if (light && sharp && position)
         {
             gameEnded = true;
             if (winText != null)
