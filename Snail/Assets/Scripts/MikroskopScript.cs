@@ -68,10 +68,6 @@ public class MikroskopScript : MonoBehaviour
             isHold = false;
         }
 
-        while (isHold)
-        {
-            playerRect.anchoredPosition += move;
-        }
         //playerRect.anchoredPosition += move;
 
         if (Vector2.Distance(playerRect.anchoredPosition, targetRect.anchoredPosition) < 0.1f)
