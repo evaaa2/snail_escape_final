@@ -22,7 +22,9 @@ public class Player : MonoBehaviour
         moveY = 0;
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
-        transform.position += new Vector3(moveX, moveY, 0f) * speed * Time.deltaTime;
+        GetComponent<RectTransform>().anchoredPosition += new Vector2(moveX, moveY) * speed * Time.deltaTime;
+        print(GetComponent<RectTransform>().anchoredPosition);
+        //transform.position += new Vector3(moveX, moveY, 0f) * speed * Time.deltaTime;
 
         if (movementDirection.x > 0)
         {

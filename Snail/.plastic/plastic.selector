@@ -1,4 +1,0 @@
-repository "Snail 2025-05-12_18-25-56/Snail@7972465300629@cloud"
-  path "/"
-    br "/main"
-    co "/main"

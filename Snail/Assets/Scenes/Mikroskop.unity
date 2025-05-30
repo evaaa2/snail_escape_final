@@ -909,7 +909,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetRect: {fileID: 717995757}
-  stepSize: 5
+  stepSize: 50
   winText: {fileID: 2101071679}
   isHold: 0
   position: 0

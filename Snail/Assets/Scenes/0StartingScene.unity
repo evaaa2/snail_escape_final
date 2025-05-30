@@ -568,7 +568,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   yourButton: {fileID: 1025465612}
-  sceneIndex: 1
+  sceneIndex: 0
 --- !u!1 &1084827846
 GameObject:
   m_ObjectHideFlags: 0

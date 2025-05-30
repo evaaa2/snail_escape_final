@@ -8,7 +8,7 @@ public class MikroskopScript : MonoBehaviour
 {
    
     public RectTransform targetRect;
-    public float stepSize = 1f;
+    public float stepSize = 50f;
     public TMP_Text winText;
     private RectTransform playerRect;
     public bool isHold = false;
@@ -35,27 +35,29 @@ public class MikroskopScript : MonoBehaviour
         if (gameEnded) return;
 
         Vector2 move = Vector2.zero;
-        if (UnityEngine.Input.GetKeyDown(KeyCode.UpArrow))
+        if (UnityEngine.Input.GetKey(KeyCode.UpArrow))
         {
-            move = Vector2.up * stepSize;
+            move += Vector2.up * stepSize * Time.deltaTime;
             isHold = true;
         }
 
-        if (UnityEngine.Input.GetKeyDown(KeyCode.DownArrow))
+        if (UnityEngine.Input.GetKey(KeyCode.DownArrow))
         {
-            move = Vector2.down * stepSize;
+            move += Vector2.down * stepSize * Time.deltaTime;
             isHold = true;
         }
-        if (UnityEngine.Input.GetKeyDown(KeyCode.LeftArrow))
+        if (UnityEngine.Input.GetKey(KeyCode.LeftArrow))
         {
-            move = Vector2.left * stepSize;
+            move += Vector2.left * stepSize * Time.deltaTime;
             isHold = true;
         }
-        if (UnityEngine.Input.GetKeyDown(KeyCode.RightArrow))
+        if (UnityEngine.Input.GetKey(KeyCode.RightArrow))
         {
-            move = Vector2.right * stepSize;
+            move += Vector2.right * stepSize * Time.deltaTime;
             isHold = true;
         }
+
+        move = move.normalized;
 
         if (UnityEngine.Input.GetKeyUp(KeyCode.UpArrow))
         {

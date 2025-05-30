@@ -6,12 +6,15 @@ public class SnailScript : MonoBehaviour
 {
     public Rigidbody2D myRigidBody;
     public SpriteRenderer mySpriteRenderer;
-    private float movementSpeed = 50f;
+    private float movementSpeed = 200f;
     float horizontalMove = 0f;
     private Vector2 movementDirection;
     public Animator animator;
     public bool isOnCeiling = false;
     public float directionMultiplier = 1;
+    private RectTransform rectTransform;
+    private RectTransform snailSpriteRectTransform;
+    private bool isHorizontal = true;
 
     public bool hasKey = false;
 
@@ -20,7 +23,8 @@ public class SnailScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        rectTransform = GetComponent<RectTransform>();
+        snailSpriteRectTransform = transform.GetChild(0).GetComponent<RectTransform>();
     }
 
     // Update is called once per frame
@@ -57,7 +61,10 @@ public class SnailScript : MonoBehaviour
 
     void FixedUpdate()
     {
-        transform.position += transform.rotation * new Vector3(movementDirection.x, 0, 0) * Time.deltaTime * movementSpeed;
+        Vector2 movement = isHorizontal ? movementDirection : new Vector2(movementDirection.y, movementDirection.x);
+        rectTransform.anchoredPosition += movement * movementSpeed * Time.fixedDeltaTime;
+        //if (rectTransform.anchoredPosition.x <= -960) rectTransform.rotation = Quaternion.Euler(0, 0, -90);
+        //else if (rectTransform.anchoredPosition.x>= 960) rectTransform.rotation = Quaternion.Euler(0, 0, 90);
         //myRigidBody.linearVelocity = transform.rotation * movementDirection * movementSpeed;
         //myRigidBody.AddForce(transform.rotation * movementDirection * movementSpeed);
     }
@@ -68,36 +75,40 @@ public class SnailScript : MonoBehaviour
     {
         if (collision.collider.CompareTag("Floor"))
         {
-            transform.rotation = Quaternion.identity; // tzn. 0,0,0
+            transform.GetChild(0).GetComponent<RectTransform>().rotation = Quaternion.identity; // tzn. 0,0,0
             Rigidbody2D rb = GetComponent<Rigidbody2D>();
             //uprava!!
             rb.gravityScale = 0f; //na zemi ma gravitaci rovnou 1
             isOnCeiling = false; //nastaveni, jestli je na zdi nebo na strope nebo normalne na zemi
             //isOnWall = false; //to isOnWall asi zatim neni potreba, nikde jsem to nakonec nepouzila
+            isHorizontal = true;
         }
         else if (collision.collider.CompareTag("Left"))
         {
-            transform.rotation = Quaternion.Euler(new Vector3(0, 0, -90));
+            transform.GetChild(0).GetComponent<RectTransform>().rotation = Quaternion.Euler(new Vector3(0, 0, -90));
             Rigidbody2D rb = GetComponent<Rigidbody2D>(); //uploaduju data rigidbody z te hry
             rb.gravityScale = 0f; //nastaveni gravitace na 0 - kdyz leze po stenach a strope
             isOnCeiling = false;
             //isOnWall = true;
+            isHorizontal = false;
         }
         else if (collision.collider.CompareTag("Right"))
         {
-            transform.rotation = Quaternion.Euler(new Vector3(0, 0, 90));
+            transform.GetChild(0).GetComponent<RectTransform>().rotation = Quaternion.Euler(new Vector3(0, 0, 90));
             Rigidbody2D rb = GetComponent<Rigidbody2D>();
             rb.gravityScale = 0f;
             isOnCeiling = false;
             //isOnWall = true;
+            isHorizontal = false;
         }
         else if (collision.collider.CompareTag("Ceiling"))
         {
-            transform.rotation = Quaternion.Euler(new Vector3(0, 0, 180));
+            transform.GetChild(0).GetComponent<RectTransform>().rotation = Quaternion.Euler(new Vector3(0, 0, 180));
             Rigidbody2D rb = GetComponent<Rigidbody2D>();
             rb.gravityScale = 0f;
             isOnCeiling = true;
             //isOnWall = false;
+            isHorizontal = true;
         }
 
         else if (collision.collider.CompareTag("Key"))
