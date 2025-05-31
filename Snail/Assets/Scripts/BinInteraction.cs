@@ -1,20 +1,20 @@
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class BinInteraction : MonoBehaviour
 {
     public Sprite openBinSprite;
     public GameObject interactionPrompt;
+    public Image canvasCounterpart; // Obrazek si nechame v canvasu, protoze se pres to lepe zarovnava. Veskerou funcionalitu ale delame tady, kde jsme na objektu mimo canvas.
 
     private Sprite closedBinSprite;
-    private SpriteRenderer sr;
     private bool isOpen = false;
     private bool playerInRange = false;
 
     void Start()
     {
-        sr = GetComponent<SpriteRenderer>();
-        closedBinSprite = sr.sprite;
+        closedBinSprite = canvasCounterpart.sprite;
         if (interactionPrompt != null)
             interactionPrompt.SetActive(false);
     }
@@ -30,7 +30,7 @@ public class BinInteraction : MonoBehaviour
     void ToggleBin()
     {
         isOpen = !isOpen;
-        sr.sprite = isOpen ? openBinSprite : closedBinSprite;
+        canvasCounterpart.sprite = isOpen ? openBinSprite : closedBinSprite;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
