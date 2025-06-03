@@ -12,6 +12,7 @@ TagManager:
   - Key
   - Bin
   - Country
+  - Interactable
   layers:
   - Default
   - TransparentFX
