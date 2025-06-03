@@ -8,117 +8,62 @@ public class MapMinigame : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public Rigidbody2D myRigidBody;
-    public float movementSpeed = 5f;
+    public float movementSpeed = 10f;
     private Vector2 movementDirection;
-
-    public TextMeshProUGUI currentCountryText;
-    public TextMeshProUGUI gameEndText;
-
+    public TextMeshProUGUI currentCountry;
     public string currentCountryName;
-    public List<Transform> countryObjects;
-    private Dictionary<string, Transform> countryMap = new Dictionary<string, Transform>();
-    private List<string> remainingCountries = new List<string>();
-    private Transform currentCountryObject;
-    private Transform playerTouchingCountry;
+    public GameObject[] countries;
 
     void Start()
     {
-        transform.rotation = Quaternion.Euler(0f, 0f, 90f);
-        gameEndText.text = "";
-        InitializeCountryMap();
-        ShowNextCountry();
+        PickNewCountry();
     }
-
-    void ShowNextCountry() //vybere nahodne zemi, ktera jeste nebyla pouzita
+    public void PickNewCountry()
     {
-        if (remainingCountries.Count == 0) //pokud zadna zeme nezbyva -> konec hry
-        {
-            EndGame();
-            return;
-        }
-
-        int index = Random.Range(0, remainingCountries.Count);
-        currentCountryName = remainingCountries[index];
-        currentCountryObject = countryMap[currentCountryName];
-
-        currentCountryText.text = currentCountryName;
+        int index = Random.Range(0, countries.Length);
+        currentCountryName = countries[index].name;
+        currentCountry.text = currentCountryName;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //movement
         float inputX = UnityEngine.Input.GetAxisRaw("Horizontal");
         float inputY = UnityEngine.Input.GetAxisRaw("Vertical");
         movementDirection = new Vector2(UnityEngine.Input.GetAxisRaw("Horizontal"), UnityEngine.Input.GetAxisRaw("Vertical"));
-       
-        //rotation to face the right direction
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (movementDirection.y > 0) //otaceni sneka kdyz leze do leva/do prava
         {
-            transform.rotation = Quaternion.Euler(0f, 0f, 0f); // Face right
+            transform.localScale = new Vector3(1, 1, 1); //nasobim tim direction multiplier aby se otacel spravne i kdyz je na strope
+
         }
-        else if (Input.GetKey(KeyCode.LeftArrow))
+        else if (movementDirection.y < 0)
         {
-            transform.rotation = Quaternion.Euler(0f, 0f, 90f); // Face left
+            transform.localScale = new Vector3(1, -1, 1);
         }
-        else if (Input.GetKey(KeyCode.DownArrow))
+        if (movementDirection.x > 0) //otaceni sneka kdyz leze do leva/doprava
         {
-            transform.rotation = Quaternion.Euler(0f, 0f, 180f); // Face left
-        }
-        else if (Input.GetKey(KeyCode.RightArrow))
-        {
-            transform.rotation = Quaternion.Euler(0f, 0f, 270f); // Face left
+            transform.localScale = new Vector3(1, 1, 1); //nasobim tim direction multiplier aby se otacel spravne i kdyz je na strope
+
         }
 
-        //testovani, jestli spravne nebo spatne
-        if (playerTouchingCountry != null)
+    }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Country"))
         {
-            if (playerTouchingCountry == currentCountryObject)
+            string touchedCountry = other.gameObject.name;
+
+            if (touchedCountry == currentCountryName)
             {
-                Debug.Log("Correct!");
-                remainingCountries.Remove(currentCountryName);
-                ShowNextCountry();
+                Debug.Log("✅ Correct! You found " + touchedCountry);
+                PickNewCountry();
             }
             else
             {
-                Debug.Log("Wrong country.");
+                Debug.Log("❌ Wrong. That was " + touchedCountry);
             }
         }
-
     }
-
-    void InitializeCountryMap() //priradi do listu ke kazdemu nazvu zeme dany gameobject
-    {
-        foreach (Transform country in countryObjects)
-        {
-            string name = country.name; // Assumes the GameObject is named after the country
-            countryMap[name] = country;
-            remainingCountries.Add(name);
-        }
-    }
-
-    void EndGame()
-    {
-        currentCountryText.text = "";
-        gameEndText.text = "GREAT JOB!";
-    }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (countryObjects.Contains(other.transform))
-        {
-            playerTouchingCountry = other.transform;
-        }
-    }
-
-    void OnTriggerExit2D(Collider2D other)
-    {
-        if (playerTouchingCountry == other.transform)
-        {
-            playerTouchingCountry = null;
-        }
-    }
-
     private void FixedUpdate()
     {
         myRigidBody.linearVelocity = movementDirection * movementSpeed;
