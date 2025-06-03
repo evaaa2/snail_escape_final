@@ -13,7 +13,7 @@ public class microscopLInteraction : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I))
         {
             Debug.Log("You have clicked the button!");
-            SceneManager.LoadScene(sceneIndex);
+            // SceneManager.LoadScene(sceneIndex);
         }
     }
     
