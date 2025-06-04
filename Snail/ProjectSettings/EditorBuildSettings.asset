@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/SceneBlueprint.unity
     guid: 4f4f3cac984cf2e4881d48a24037656d
   - enabled: 1
+    path: Assets/Scenes/2Mikroskop.unity
+    guid: cedb700dc4fd7f34080aac9ebcb081ab
+  - enabled: 1
     path: Assets/Scenes/Room.unity
     guid: 7ae2a224443b7754e878886d3b19e794
   m_configObjects:
