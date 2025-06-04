@@ -14,7 +14,7 @@ public class BinInteraction : MonoBehaviour
     void Start()
     {
         // Store the default closed sprite from the canvas image
-        closedBinSprite = canvasCounterpart.sprite;
+        //closedBinSprite = canvasCounterpart.sprite;
 
         // Hide interaction prompt at start
         if (interactionPrompt != null)
