@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/2BioLab.unity
+    path: Assets/Scenes/1BioLab.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 0
     path: Assets/Scenes/1StartingScene.unity
@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/SceneBlueprint.unity
     guid: 4f4f3cac984cf2e4881d48a24037656d
   - enabled: 1
-    path: Assets/Scenes/3Room3.unity
+    path: Assets/Scenes/Room.unity
     guid: 7ae2a224443b7754e878886d3b19e794
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
