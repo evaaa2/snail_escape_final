@@ -13,6 +13,7 @@ TagManager:
   - Bin
   - Country
   - Interactable
+  - Wall
   layers:
   - Default
   - TransparentFX
