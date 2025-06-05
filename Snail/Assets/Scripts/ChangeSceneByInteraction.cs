@@ -26,7 +26,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
         {
             if (Input.GetKeyDown(interactWithKey)) //pokud mackam tlacitko interagovat
             {
-                AudioManager.instance.PlayClip(soundEffect); //hraje audio
+                AudioSource.PlayClipAtPoint(soundEffect, transform.position); //hraje audio
 
                 SceneManager.LoadScene(sceneBuildIndex, LoadSceneMode.Single); //jde do next scene
                 
