@@ -1676,7 +1676,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneBuildIndex: 4
-  soundEffect: {fileID: 8300000, guid: b570a6d08d0baf6448519dcef08ff6bb, type: 3}
   isInRange: 1
   interactWithKey: 101
   interactAction:
