@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 public class MapMinigame : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     public Rigidbody2D myRigidBody;
     public float movementSpeed = 5f;
     private Vector2 movementDirection;
@@ -21,6 +21,7 @@ public class MapMinigame : MonoBehaviour
     private Transform currentCountryObject;
     private Transform playerTouchingCountry;
 
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         transform.rotation = Quaternion.Euler(0f, 0f, 90f);
@@ -107,6 +108,7 @@ public class MapMinigame : MonoBehaviour
     {
         currentCountryText.text = "";
         gameEndText.text = "GREAT JOB!";
+        SceneManager.LoadScene(6, LoadSceneMode.Single); //prechod do dalsi sceny
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -129,8 +131,4 @@ public class MapMinigame : MonoBehaviour
     {
         myRigidBody.linearVelocity = movementDirection * movementSpeed;
     }
-
-
-
-
 }

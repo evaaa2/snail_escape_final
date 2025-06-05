@@ -2,12 +2,12 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Windows;
 
 public class MikroskopScript : MonoBehaviour
 {
-   
     public RectTransform targetRect;
     public float stepSize = 50f;
     public TMP_Text winText;
@@ -128,6 +128,7 @@ public class MikroskopScript : MonoBehaviour
             if (winText != null)
             {
                 winText.gameObject.SetActive(true);
+                SceneManager.LoadScene(3, LoadSceneMode.Single); //posun na dalsi scenu
             }
         }
     }
