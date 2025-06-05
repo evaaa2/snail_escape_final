@@ -24,6 +24,9 @@ EditorBuildSettings:
     path: Assets/Scenes/5MapGame.unity
     guid: 64be2c929b450e943a2dfe15f0499bea
   - enabled: 1
+    path: Assets/Scenes/6Zemepis2.unity
+    guid: c04992efe0e67cf44bce591587686c8f
+  - enabled: 1
     path: Assets/Scenes/7FinalMinigame.unity
     guid: b54b9b560b47e7340bff75b09520f1e5
   - enabled: 1
