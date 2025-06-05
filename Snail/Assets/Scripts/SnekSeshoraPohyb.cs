@@ -9,27 +9,27 @@ public class SnekSeshoraPohyb : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.gravityScale = 0; // Just in case you forgot
+        rb.gravityScale = 0;
+        rb.freezeRotation = true; // Zamkne fyzikální otáèení, rotaci øídíme skriptem
     }
 
     void Update()
     {
-        // Get input
+        // Naèti vstup z klávesnice
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
-        // Rotate only if moving
+        // Otoèí objekt pouze pokud hráè nìco maèká
         if (movement.sqrMagnitude > 0.01f)
         {
             float angle = Mathf.Atan2(movement.y, movement.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0f, 0f, angle - 90f);
-            // "-90" assumes sprite faces up by default, adjust if needed
+            transform.rotation = Quaternion.Euler(0f, 0f, angle - 90f); // -90° pokud má sprite èumák nahoru
         }
     }
 
     void FixedUpdate()
     {
-        // Move the object
+        // Pohyb pomocí linearVelocity (pokud to editor vyžaduje)
         rb.linearVelocity = movement.normalized * moveSpeed;
     }
 }
