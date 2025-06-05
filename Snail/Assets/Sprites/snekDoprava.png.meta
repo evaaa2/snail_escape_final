@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      snekDoprava_0: 7593880466508987686
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -51,11 +51,12 @@ public class MapMinigame : MonoBehaviour
         float inputX = UnityEngine.Input.GetAxisRaw("Horizontal");
         float inputY = UnityEngine.Input.GetAxisRaw("Vertical");
         movementDirection = new Vector2(UnityEngine.Input.GetAxisRaw("Horizontal"), UnityEngine.Input.GetAxisRaw("Vertical"));
-       
+
         //rotation to face the right direction
         if (Input.GetKey(KeyCode.UpArrow))
         {
             transform.rotation = Quaternion.Euler(0f, 0f, 0f); // Face right
+
         }
         else if (Input.GetKey(KeyCode.LeftArrow))
         {
@@ -64,8 +65,13 @@ public class MapMinigame : MonoBehaviour
         else if (Input.GetKey(KeyCode.DownArrow))
         {
             transform.rotation = Quaternion.Euler(0f, 0f, 180f); // Face left
+
         }
         else if (Input.GetKey(KeyCode.RightArrow))
+
+
+
+
         {
             transform.rotation = Quaternion.Euler(0f, 0f, 270f); // Face left
         }
