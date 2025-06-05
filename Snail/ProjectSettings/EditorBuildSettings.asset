@@ -6,17 +6,20 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/0StartingScene.unity
+    guid: 5438702a10739744ca892c094f6e8704
+  - enabled: 1
     path: Assets/Scenes/1BioLab.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 0
-    path: Assets/Scenes/1StartingScene.unity
-    guid: 03676c8971537284dbafd037a816c3d9
-  - enabled: 1
-    path: Assets/Scenes/SceneBlueprint.unity
-    guid: 4f4f3cac984cf2e4881d48a24037656d
   - enabled: 1
     path: Assets/Scenes/2Mikroskop.unity
     guid: cedb700dc4fd7f34080aac9ebcb081ab
+  - enabled: 1
+    path: Assets/Scenes/4Zemepis.unity
+    guid: c798a235f6f15514497e41fb985ac33e
+  - enabled: 1
+    path: Assets/Scenes/SceneBlueprint.unity
+    guid: 4f4f3cac984cf2e4881d48a24037656d
   - enabled: 1
     path: Assets/Scenes/Room.unity
     guid: 7ae2a224443b7754e878886d3b19e794

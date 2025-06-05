@@ -25,7 +25,7 @@ public class BinInteraction : MonoBehaviour
     {
         if (playerInRange && Input.GetKeyDown(KeyCode.I))
         {
-            ToggleBin();
+            //ToggleBin();
         }
     }
 
