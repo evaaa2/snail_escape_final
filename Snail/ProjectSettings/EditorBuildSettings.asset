@@ -21,8 +21,8 @@ EditorBuildSettings:
     path: Assets/Scenes/4Zemepis.unity
     guid: c798a235f6f15514497e41fb985ac33e
   - enabled: 1
-    path: Assets/Scenes/SceneBlueprint.unity
-    guid: 4f4f3cac984cf2e4881d48a24037656d
+    path: Assets/Scenes/5MapGame.unity
+    guid: 64be2c929b450e943a2dfe15f0499bea
   - enabled: 1
     path: Assets/Scenes/Room.unity
     guid: 7ae2a224443b7754e878886d3b19e794
