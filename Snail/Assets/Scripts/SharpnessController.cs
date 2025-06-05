@@ -6,7 +6,7 @@ public class SharpnessController : MonoBehaviour
     public Material sharpnessMaterial;
     public Slider sharpnessSlider;
     public Slider lightnessSlider;
-    public RawImage targetImage;
+    public Image targetImage;
 
 
 
@@ -18,16 +18,17 @@ public class SharpnessController : MonoBehaviour
         SetSharpness(sharpnessSlider.value); // Initialize
         lightnessSlider.onValueChanged.AddListener(SetLightness);
         SetLightness(lightnessSlider.value);
+        targetImage.material = new Material(targetImage.material);
 
     }
 
     void SetSharpness(float value)
     {
-        sharpnessMaterial.SetFloat("_Sharpness", value);
+        targetImage.material.SetFloat("_Sharpness", value);
     }
     public void SetLightness(float value)
     {
-        sharpnessMaterial.SetFloat("_Lightness", value);
+        targetImage.material.SetFloat("_Lightness", value);
     }
 
     // Update is called once per frame

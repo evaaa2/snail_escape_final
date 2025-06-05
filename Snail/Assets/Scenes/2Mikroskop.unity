@@ -398,10 +398,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad78cafd5d3361f42ad3d6f67659a487, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sharpnessMaterial: {fileID: 2100000, guid: a1a6acfec962cda4980a8de7165ccd38, type: 2}
+  sharpnessMaterial: {fileID: 2100000, guid: f82a8e3869df8214398fd53d8e6d3e32, type: 2}
   sharpnessSlider: {fileID: 257688899}
   lightnessSlider: {fileID: 1891845402}
-  targetImage: {fileID: 0}
+  targetImage: {fileID: 1220913918}
 --- !u!114 &257688899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1140,7 +1140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: a1a6acfec962cda4980a8de7165ccd38, type: 2}
+  m_Material: {fileID: 2100000, guid: f82a8e3869df8214398fd53d8e6d3e32, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -1898,10 +1898,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad78cafd5d3361f42ad3d6f67659a487, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sharpnessMaterial: {fileID: 2100000, guid: a1a6acfec962cda4980a8de7165ccd38, type: 2}
+  sharpnessMaterial: {fileID: 2100000, guid: f82a8e3869df8214398fd53d8e6d3e32, type: 2}
   sharpnessSlider: {fileID: 257688899}
   lightnessSlider: {fileID: 1891845402}
-  targetImage: {fileID: 0}
+  targetImage: {fileID: 1220913918}
 --- !u!114 &1891845402
 MonoBehaviour:
   m_ObjectHideFlags: 0
