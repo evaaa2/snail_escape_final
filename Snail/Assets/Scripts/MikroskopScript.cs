@@ -1,5 +1,6 @@
 using TMPro;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Windows;
@@ -18,6 +19,13 @@ public class MikroskopScript : MonoBehaviour
     public bool sharp = false;
     public Slider sharpnessSlider;
     public Slider lightnessSlider;
+    public TextMeshProUGUI lightText;
+    public TextMeshProUGUI sharpnessText;
+
+    public RectTransform leftBorder;
+    public RectTransform rightBorder;
+    public RectTransform topBorder;
+    public RectTransform bottomBorder;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -27,11 +35,21 @@ public class MikroskopScript : MonoBehaviour
         {
             winText.gameObject.SetActive(false);
         }
+        if (lightText != null)
+        {
+            lightText.gameObject.SetActive(false);
+        }
+        if (sharpnessText != null)
+        {
+            sharpnessText.gameObject.SetActive(false);
+        }
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        ClampToBorders();
         if (gameEnded) return;
 
         Vector2 move = Vector2.zero;
@@ -90,6 +108,20 @@ public class MikroskopScript : MonoBehaviour
         {
             lightIsOk = true;
         }
+        if (position) 
+        {
+            if (lightText != null)
+            {
+                lightText.gameObject.SetActive(true);
+            }
+        }
+        if (lightIsOk)
+        {
+            if (sharpnessText != null)
+            {
+                sharpnessText.gameObject.SetActive(true);
+            }
+        }
         if (lightIsOk && sharp && position)
         {
             gameEnded = true;
@@ -98,6 +130,24 @@ public class MikroskopScript : MonoBehaviour
                 winText.gameObject.SetActive(true);
             }
         }
+    }
+
+    void ClampToBorders()
+    {
+        Vector2 pos = playerRect.anchoredPosition;
+
+        float halfWidth = playerRect.rect.width / 2;
+        float halfHeight = playerRect.rect.height / 2;
+
+        float minX = leftBorder.anchoredPosition.x + halfWidth;
+        float maxX = rightBorder.anchoredPosition.x - halfWidth;
+        float minY = bottomBorder.anchoredPosition.y + halfHeight;
+        float maxY = topBorder.anchoredPosition.y - halfHeight;
+
+        pos.x = Mathf.Clamp(pos.x, minX, maxX);
+        pos.y = Mathf.Clamp(pos.y, minY, maxY);
+
+        playerRect.anchoredPosition = pos;
     }
 
 }
