@@ -22,13 +22,14 @@ public class NewMonoBehaviourScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isInRange) //pokud jsem blizko klice
+        if (isInRange) //pokud jsem blizko objektu
         {
             if (Input.GetKeyDown(interactWithKey)) //pokud mackam tlacitko interagovat
             {
-                AudioManager.instance.PlayClip(soundEffect);
+                AudioManager.instance.PlayClip(soundEffect); //hraje audio
 
                 SceneManager.LoadScene(sceneBuildIndex, LoadSceneMode.Single); //jde do next scene
+                
                 //interactAction.Invoke(); //zacne mi event, tohle tam nechavame, pokud bude nejaka animace...
             }
         }
