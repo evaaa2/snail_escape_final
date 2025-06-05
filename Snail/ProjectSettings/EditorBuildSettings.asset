@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/2Mikroskop.unity
     guid: cedb700dc4fd7f34080aac9ebcb081ab
   - enabled: 1
+    path: Assets/Scenes/3Biolab2.unity
+    guid: 56df8453a6bc25a42bc81f18bb31d3ed
+  - enabled: 1
     path: Assets/Scenes/4Zemepis.unity
     guid: c798a235f6f15514497e41fb985ac33e
   - enabled: 1
