@@ -1,8 +1,11 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class NewMonoBehaviourScript : MonoBehaviour
 {
+    public int sceneBuildIndex;
+
     public bool isInRange = false; //jsem v dost blizke vzdalenosti klici?
     public KeyCode interactWithKey; //mackam E
     public UnityEvent interactAction;
@@ -21,6 +24,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
         {
             if (Input.GetKeyDown(interactWithKey)) //pokud mackam tlacitko interagovat
             {
+                SceneManager.LoadScene(sceneBuildIndex, LoadSceneMode.Single); //jde do next scene
                 //interactAction.Invoke(); //zacne mi event, tohle tam nechavame, pokud bude nejaka animace
             }
         }

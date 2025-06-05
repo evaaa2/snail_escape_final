@@ -1493,8 +1493,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -9.458}
   m_AnchorMin: {x: 0.321, y: 0.39100003}
   m_AnchorMax: {x: 0.4097917, y: 0.609}
-  m_AnchoredPosition: {x: -601, y: 262}
-  m_SizeDelta: {x: -57.02, y: -35.36}
+  m_AnchoredPosition: {x: -601, y: 289.70496}
+  m_SizeDelta: {x: -57.02, y: -36.209885}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1249453585
 MonoBehaviour:
@@ -1737,6 +1737,7 @@ GameObject:
   - component: {fileID: 1492169111}
   - component: {fileID: 1492169113}
   - component: {fileID: 1492169112}
+  - component: {fileID: 1492169114}
   m_Layer: 5
   m_Name: Collider
   m_TagString: Interactable
@@ -1823,6 +1824,24 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 2, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1492169114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1492169110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 050d21222f7b63e4292377f5f14ec6a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneBuildIndex: 2
+  isInRange: 1
+  interactWithKey: 101
+  interactAction:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1640060844
 GameObject:
   m_ObjectHideFlags: 0
@@ -1944,8 +1963,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -6, y: -292}
-  m_SizeDelta: {x: -1782.52, y: -617}
+  m_AnchoredPosition: {x: -6, y: -277.1}
+  m_SizeDelta: {x: -1782.52, y: -646.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1691690316
 MonoBehaviour:
