@@ -4,7 +4,9 @@ using UnityEngine.SceneManagement;
 
 public class NewMonoBehaviourScript : MonoBehaviour
 {
-    public int sceneBuildIndex;
+    public int sceneBuildIndex; //poradi scen
+
+    public AudioClip soundEffect;
 
     public bool isInRange = false; //jsem v dost blizke vzdalenosti klici?
     public KeyCode interactWithKey; //mackam E
@@ -24,8 +26,10 @@ public class NewMonoBehaviourScript : MonoBehaviour
         {
             if (Input.GetKeyDown(interactWithKey)) //pokud mackam tlacitko interagovat
             {
+                AudioManager.instance.PlayClip(soundEffect);
+
                 SceneManager.LoadScene(sceneBuildIndex, LoadSceneMode.Single); //jde do next scene
-                //interactAction.Invoke(); //zacne mi event, tohle tam nechavame, pokud bude nejaka animace
+                //interactAction.Invoke(); //zacne mi event, tohle tam nechavame, pokud bude nejaka animace...
             }
         }
     }
