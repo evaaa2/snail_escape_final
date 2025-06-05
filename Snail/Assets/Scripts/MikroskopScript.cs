@@ -14,7 +14,7 @@ public class MikroskopScript : MonoBehaviour
     public bool isHold = false;
     private bool gameEnded = false;
     public bool position = false;
-    public bool light = false;
+    public bool lightIsOk = false;
     public bool sharp = false;
     public Slider sharpnessSlider;
     public Slider lightnessSlider;
@@ -88,9 +88,9 @@ public class MikroskopScript : MonoBehaviour
         }
         if (lightnessSlider.value < 0.55 && lightnessSlider.value > 0.4)
         {
-            light = true;
+            lightIsOk = true;
         }
-        if (light && sharp && position)
+        if (lightIsOk && sharp && position)
         {
             gameEnded = true;
             if (winText != null)
