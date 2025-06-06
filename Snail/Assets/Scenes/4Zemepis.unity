@@ -949,11 +949,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5007117627911609830, guid: 8fb6e5f36ad56f74193d421c2d848718, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.5
+      value: 8.92
       objectReference: {fileID: 0}
     - target: {fileID: 5007117627911609830, guid: 8fb6e5f36ad56f74193d421c2d848718, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.32
       objectReference: {fileID: 0}
     - target: {fileID: 5007117627911609830, guid: 8fb6e5f36ad56f74193d421c2d848718, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1093,11 +1093,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5007117627911609830, guid: 8fb6e5f36ad56f74193d421c2d848718, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11
+      value: -8.95
       objectReference: {fileID: 0}
     - target: {fileID: 5007117627911609830, guid: 8fb6e5f36ad56f74193d421c2d848718, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.2
       objectReference: {fileID: 0}
     - target: {fileID: 5007117627911609830, guid: 8fb6e5f36ad56f74193d421c2d848718, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1509,10 +1509,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1765287912}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.7895992, y: 0.43778244}
-  m_AnchorMax: {x: 0.88380176, y: 0.68976164}
-  m_AnchoredPosition: {x: 51.289124, y: 2.0587082}
-  m_SizeDelta: {x: -1.1067047, y: -4.117401}
+  m_AnchorMin: {x: 0.8254374, y: 0.43778244}
+  m_AnchorMax: {x: 0.93019396, y: 0.69085187}
+  m_AnchoredPosition: {x: -2.6599731, y: -0.5000076}
+  m_SizeDelta: {x: 5.470001, y: -1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1872552476
 MonoBehaviour:
@@ -1600,7 +1600,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -7.1429825, y: 0.44900513}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1610,7 +1610,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 195.49605, y: 275.21295}
   m_EdgeRadius: 0
 --- !u!114 &1872552480
 MonoBehaviour:
