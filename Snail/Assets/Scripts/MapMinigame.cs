@@ -24,10 +24,22 @@ public class MapMinigame : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        transform.rotation = Quaternion.Euler(0f, 0f, 90f);
+        myRigidBody.transform.rotation = Quaternion.Euler(0f, 0f, 90f);
         gameEndText.text = "";
         InitializeCountryMap();
-        ShowNextCountry();
+        
+    }
+
+
+    void InitializeCountryMap() //priradi do listu ke kazdemu nazvu zeme dany gameobject
+    {
+        foreach (Transform country in countryObjects)
+        {
+            string name = country.name; // Assumes the GameObject is named after the country
+            countryMap[name] = country;
+            remainingCountries.Add(name);
+            ShowNextCountry();
+        }
     }
 
     void ShowNextCountry() //vybere nahodne zemi, ktera jeste nebyla pouzita
@@ -40,6 +52,8 @@ public class MapMinigame : MonoBehaviour
 
         int index = Random.Range(0, remainingCountries.Count);
         currentCountryName = remainingCountries[index];
+        print(index);
+        print(currentCountryName);
         currentCountryObject = countryMap[currentCountryName];
 
         currentCountryText.text = currentCountryName;
@@ -56,25 +70,21 @@ public class MapMinigame : MonoBehaviour
         //rotation to face the right direction
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            transform.rotation = Quaternion.Euler(0f, 0f, 0f); // Face right
+            myRigidBody.transform.rotation = Quaternion.Euler(0f, 0f, 0f); // Face right
 
         }
         else if (Input.GetKey(KeyCode.LeftArrow))
         {
-            transform.rotation = Quaternion.Euler(0f, 0f, 90f); // Face left
+            myRigidBody.transform.rotation = Quaternion.Euler(0f, 0f, 90f); // Face left
         }
         else if (Input.GetKey(KeyCode.DownArrow))
         {
-            transform.rotation = Quaternion.Euler(0f, 0f, 180f); // Face left
+            myRigidBody.transform.rotation = Quaternion.Euler(0f, 0f, 180f); // Face left
 
         }
         else if (Input.GetKey(KeyCode.RightArrow))
-
-
-
-
         {
-            transform.rotation = Quaternion.Euler(0f, 0f, 270f); // Face left
+            myRigidBody.transform.rotation = Quaternion.Euler(0f, 0f, 270f); // Face left
         }
 
         //testovani, jestli spravne nebo spatne
@@ -94,15 +104,6 @@ public class MapMinigame : MonoBehaviour
 
     }
 
-    void InitializeCountryMap() //priradi do listu ke kazdemu nazvu zeme dany gameobject
-    {
-        foreach (Transform country in countryObjects)
-        {
-            string name = country.name; // Assumes the GameObject is named after the country
-            countryMap[name] = country;
-            remainingCountries.Add(name);
-        }
-    }
 
     void EndGame()
     {
