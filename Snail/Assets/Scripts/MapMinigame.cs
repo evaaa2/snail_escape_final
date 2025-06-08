@@ -14,12 +14,14 @@ public class MapMinigame : MonoBehaviour
     public TextMeshProUGUI currentCountryText;
     public TextMeshProUGUI gameEndText;
 
-    public string currentCountryName;
+    private string currentCountryName;
+    private int index;
     public List<Transform> countryObjects;
     private Dictionary<string, Transform> countryMap = new Dictionary<string, Transform>();
     private List<string> remainingCountries = new List<string>();
     private Transform currentCountryObject;
     private Transform playerTouchingCountry;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -27,7 +29,7 @@ public class MapMinigame : MonoBehaviour
         myRigidBody.transform.rotation = Quaternion.Euler(0f, 0f, 90f);
         gameEndText.text = "";
         InitializeCountryMap();
-        
+        ShowNextCountry();
     }
 
 
@@ -38,23 +40,24 @@ public class MapMinigame : MonoBehaviour
             string name = country.name; // Assumes the GameObject is named after the country
             countryMap[name] = country;
             remainingCountries.Add(name);
-            ShowNextCountry();
         }
     }
 
     void ShowNextCountry() //vybere nahodne zemi, ktera jeste nebyla pouzita
     {
+        Debug.Log("ShowNextCountry CALLED");
         if (remainingCountries.Count == 0) //pokud zadna zeme nezbyva -> konec hry
         {
             EndGame();
             return;
         }
 
-        int index = Random.Range(0, remainingCountries.Count);
+        index = Random.Range(0, remainingCountries.Count);
         currentCountryName = remainingCountries[index];
         print(index);
         print(currentCountryName);
         currentCountryObject = countryMap[currentCountryName];
+        print(currentCountryObject.name);
 
         currentCountryText.text = currentCountryName;
     }
