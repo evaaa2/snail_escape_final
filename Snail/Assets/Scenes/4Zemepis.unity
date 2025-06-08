@@ -1179,8 +1179,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.8254374, y: 0.023784542}
   m_AnchorMax: {x: 1, y: 0.8947778}
-  m_AnchoredPosition: {x: -7.3599854, y: -24.429993}
-  m_SizeDelta: {x: 489.49, y: 1369.97}
+  m_AnchoredPosition: {x: -2.6976929, y: -36.41266}
+  m_SizeDelta: {x: 456.83, y: 1393.9348}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!61 &1737754848
 BoxCollider2D:
